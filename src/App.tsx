@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { dummyText, dummyAnnotations, dummyLabels } from "./dummy";
+import useAnnotato from "./hooks/useAnnotato";
+import { AnnotatoModes } from "./types/AnnotatoMode";
 
 function App() {
+  const [Annotato, annotations] = useAnnotato({
+    mode: AnnotatoModes.EDIT,
+    text: dummyText,
+    annotations: dummyAnnotations,
+    labels: dummyLabels,
+    onClick: (annotation, e) => console.log("CLICK", annotation, e),
+    onMouseEnter: (annotation, e) => console.log("HOVER", annotation, e),
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div style={{ maxWidth: "50%", textAlign: "justify", margin: "0 auto" }}>
+        <Annotato />
+        <button
+          onClick={() => {
+            console.log(annotations);
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          Click
+        </button>
+      </div>
     </div>
   );
 }

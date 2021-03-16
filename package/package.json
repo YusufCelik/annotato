@@ -1,0 +1,10 @@
+{
+  "name": "annotato",
+  "version": "1.0.0",
+  "license": "CC-BY-4.0",
+  "author": {
+    "name": "Yusuf Celik",
+    "email": "yusufcelik@icloud.com"
+  },
+  "description": "Annotato is a hook for React that provides an annotation editor"
+}

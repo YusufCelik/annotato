@@ -1,7 +1,7 @@
 {
   "name": "annotato",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "license": "CC-BY-4.0",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
@@ -20,7 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lib-build": "tsc --build ./package/tsconfig.json"
   },
   "eslintConfig": {
     "extends": [

@@ -1,0 +1,40 @@
+{
+    "compilerOptions": {
+      "outDir": "./",
+      "target": "es5",
+      "lib": [
+        "dom",
+        "dom.iterable",
+        "esnext"
+      ],
+      "allowJs": true,
+      "skipLibCheck": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "strict": true,
+      "forceConsistentCasingInFileNames": true,
+      "noFallthroughCasesInSwitch": true,
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "jsx": "react-jsx",
+      "declaration": true,
+      "declarationMap": true,
+      "sourceMap": true,
+      "noEmit": false,
+    },
+    "include": [
+      "../src"
+    ],
+    "exclude": [
+      "../node_modules",
+      "../**/*.test.ts",
+      "../**/*.test.tsx",
+      "../**/*.stories.tsx",
+      "../src/setupTests.ts",
+      "../src/*.*",
+      "../src/dummy/**/*"
+    ]
+  }
+  

@@ -1,46 +1,65 @@
-# Getting Started with Create React App
+# Annotato
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![alt text]('./public/images/preview.png' "Preview picture")
 
-## Available Scripts
+Annotato is a React component that helps to annotate or merely display previously made annotations in a given text. All edits, and thus new annotations, are stored in the component state that can be acquired via the useAnnotato hook.
 
-In the project directory, you can run:
+There are two distinct modes in Annotato: read and edit. The read mode allows for prior stored annotations to appear in a given text without edit functionality. The edit mode, however, does display an additional label selector toolbar and allows for new annotations to be made as well as previous annotations to be removed. New annotations are made by highlighting some text and then clicking on the desired label in the label toolbar.
 
-### `npm start`
+Both modes support custom onClick and onHover events to be attached to the annotations.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Install
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```npm install --save annotato```
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```js
+import React from 'react';
+import useAnnotato from 'annotato/hooks/useAnnotato';
 
-### `npm run build`
+const dummyText = "This is a text that will be annotated.";
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+const dummyAnnotations = [{
+    id: "someId",
+    labelId: "test",
+    startOffset: 0,
+    endOffset: 4
+}];
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+const dummyLabels = [
+  {
+    id: "test",
+    color: "#444999",
+  }
+];
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+function View() {
+  const [Annotato, annotations] = useAnnotato({
+    mode: "edit",
+    text: dummyText,
+    annotations: dummyAnnotations,
+    labels: dummyLabels,
+    onClick: (annotation, e) => console.log("CLICK", annotation, e),
+    onMouseEnter: (annotation, e) => console.log("HOVER", annotation, e),
+  });
 
-### `npm run eject`
+  return (
+    <div className="App">
+      <div style={{ maxWidth: "50%", textAlign: "justify", margin: "0 auto" }}>
+        <Annotato />
+        <button
+          onClick={() => {
+            console.log(annotations);
+          }}
+        >
+          Click
+        </button>
+      </div>
+    </div>
+  );
+}
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## API
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
