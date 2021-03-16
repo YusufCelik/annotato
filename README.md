@@ -1,6 +1,6 @@
 # Annotato
 
-![alt text]('./public/images/preview.png' "Preview picture")
+![alt text]('../master/public/images/preview.png' "Preview picture")
 
 Annotato is a React component that helps to annotate or merely display previously made annotations in a given text. All edits, and thus new annotations, are stored in the component state that can be acquired via the useAnnotato hook.
 
