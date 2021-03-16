@@ -4,11 +4,7 @@ import Segment from "../types/Segment";
 import { deriveAnnotationsFromSegments } from "../utils";
 import generateId from "../utils/generateId";
 
-interface ILabelSelectorProps {
-  children: React.ReactNode;
-}
-
-const LabelSelector: React.FC<ILabelSelectorProps> = ({ children }) => {
+const LabelSelector = () => {
   const { state, dispatch } = useContext(AnnotatoContext);
 
   const generateSegments = (
@@ -172,19 +168,6 @@ const LabelSelector: React.FC<ILabelSelectorProps> = ({ children }) => {
             >
               {label.id}
             </button>
-            {isSelected ? (
-              <button
-                className={"annotato__label-selector__unselect-button"}
-                onClick={() => {
-                  dispatch({
-                    type: "update_selected_label",
-                    selectedLabel: "",
-                  });
-                }}
-              >
-                {children}
-              </button>
-            ) : null}
           </li>
         );
       })}

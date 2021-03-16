@@ -1,6 +1,5 @@
 import React, { useEffect, useReducer } from "react";
 import { annotatoReducer, Provider } from "../store/AnnotatoStore";
-import DefaultUnselectButton from "../components/DefaultUnselectButton";
 import LabelSelector from "../components/LabelSelector";
 import AnnotatoView from "../components/View";
 
@@ -17,7 +16,6 @@ interface IUseAnnotatoConfig {
   annotations?: Array<Annotation>;
   labels?: Array<AnnotationLabel>;
   text: string;
-  unselectIcon?: React.ReactNode;
   removeAnnotationIcon?: React.ReactNode;
   onClick?: (
     annotation: Annotation,
@@ -66,15 +64,7 @@ const useAnnotato = (config: IUseAnnotatoConfig) => {
     () => (
       <Provider value={{ state, dispatch }}>
         <section className={"annotato__container"}>
-          {config.mode === AnnotatoModes.EDIT ? (
-            <LabelSelector>
-              {config.unselectIcon ? (
-                config.unselectIcon
-              ) : (
-                <DefaultUnselectButton />
-              )}
-            </LabelSelector>
-          ) : null}
+          {config.mode === AnnotatoModes.EDIT ? <LabelSelector /> : null}
           <AnnotatoView>
             {config.removeAnnotationIcon ? (
               config.removeAnnotationIcon
